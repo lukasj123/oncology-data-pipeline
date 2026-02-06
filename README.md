@@ -9,3 +9,29 @@ The raw data is archived in S3 for auditability, and the pipeline includes data 
 ## Architecture Overview
 
 ## How to Run
+
+## Key Learnings & Design Decisions
+
+### Normalization vs. Denormalization Trade-offs
+
+One of the fundamental tensions in data modeling is the trade-off between **storage efficiency** (normalization) and **query efficiency** (denormalization).
+
+**Normalization (storage efficient):**
+- Eliminates data duplication by splitting related data into separate tables
+- Requires joins to reassemble data for queries
+- Ideal for transactional systems (OLTP) with frequent writes and updates
+- Example: Storing drug metadata once in a `drugs` table, referenced by ID elsewhere
+
+**Denormalization (query efficient):**
+- Accepts some duplication to avoid expensive joins
+- Faster read performance, especially for analytics queries
+- Ideal for analytical systems (OLAP) where reads vastly outnumber writes
+- Example: Storing drug names directly in biomarker records instead of joining to a dimension table
+
+**Our approach:** Since this is an analytical data warehouse optimized for read queries, we lean toward denormalization when the trade-off is marginal. For example, we use a single `drugs` table with a `drug_type` flag rather than splitting into `drugs` and `drug_families` tables, because:
+- Storage difference is negligible (~300 rows either way)
+- Query complexity is reduced (one join instead of UNION logic)
+- Transformation logic is simpler
+- Still semantically clear with the type flag
+
+This decision prioritizes **developer experience** and **query simplicity** over theoretical normalization purity — appropriate for a data warehouse context.
