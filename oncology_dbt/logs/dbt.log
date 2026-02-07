@@ -1,0 +1,225 @@
+[0m21:17:54.135894 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1075fbb10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107682b90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1076836d0>]}
+
+
+============================== 21:17:54.138728 | f93349fd-a0b7-479c-9ced-48bc3296a413 ==============================
+[0m21:17:54.138728 [info ] [MainThread]: Running with dbt=1.11.3
+[0m21:17:54.139054 [debug] [MainThread]: running dbt with arguments {'send_anonymous_usage_stats': 'True', 'static_parser': 'True', 'empty': 'None', 'profiles_dir': '/Users/luke/.dbt', 'use_experimental_parser': 'False', 'log_format': 'default', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'invocation_command': 'dbt debug', 'log_path': '/Users/luke/Desktop/Coding Projects/oncology-data-pipeline/oncology_dbt/logs', 'partial_parse': 'True', 'debug': 'False', 'quiet': 'False', 'printer_width': '80', 'target_path': 'None', 'log_cache_events': 'False', 'write_json': 'True', 'warn_error': 'None', 'indirect_selection': 'eager', 'use_colors': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])'}
+[0m21:17:54.148695 [info ] [MainThread]: dbt version: 1.11.3
+[0m21:17:54.148943 [info ] [MainThread]: python version: 3.11.14
+[0m21:17:54.149107 [info ] [MainThread]: python path: /opt/anaconda3/envs/oncology/bin/python3.11
+[0m21:17:54.149244 [info ] [MainThread]: os info: macOS-26.2-arm64-arm-64bit
+[0m21:17:54.175833 [info ] [MainThread]: Using profiles dir at /Users/luke/.dbt
+[0m21:17:54.176165 [info ] [MainThread]: Using profiles.yml file at /Users/luke/.dbt/profiles.yml
+[0m21:17:54.176310 [info ] [MainThread]: Using dbt_project.yml file at /Users/luke/Desktop/Coding Projects/oncology-data-pipeline/oncology_dbt/dbt_project.yml
+[0m21:17:54.176590 [info ] [MainThread]: adapter type: postgres
+[0m21:17:54.176714 [info ] [MainThread]: adapter version: 1.10.0
+[0m21:17:54.221300 [info ] [MainThread]: Configuration:
+[0m21:17:54.221599 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m21:17:54.221746 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m21:17:54.221872 [info ] [MainThread]: Required dependencies:
+[0m21:17:54.222059 [debug] [MainThread]: Executing "git --help"
+[0m21:17:54.245830 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Reset current HEAD to the specified state\n   switch     Switch branches\n   tag        Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m21:17:54.246472 [debug] [MainThread]: STDERR: "b''"
+[0m21:17:54.246661 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m21:17:54.246828 [info ] [MainThread]: Connection:
+[0m21:17:54.247030 [info ] [MainThread]:   host: localhost
+[0m21:17:54.247157 [info ] [MainThread]:   port: 5432
+[0m21:17:54.247275 [info ] [MainThread]:   user: postgres
+[0m21:17:54.247393 [info ] [MainThread]:   database: postgres
+[0m21:17:54.247507 [info ] [MainThread]:   schema: public
+[0m21:17:54.247621 [info ] [MainThread]:   connect_timeout: 10
+[0m21:17:54.247737 [info ] [MainThread]:   role: None
+[0m21:17:54.247853 [info ] [MainThread]:   search_path: None
+[0m21:17:54.247967 [info ] [MainThread]:   keepalives_idle: 0
+[0m21:17:54.248076 [info ] [MainThread]:   sslmode: None
+[0m21:17:54.248187 [info ] [MainThread]:   sslcert: None
+[0m21:17:54.248297 [info ] [MainThread]:   sslkey: None
+[0m21:17:54.248407 [info ] [MainThread]:   sslrootcert: None
+[0m21:17:54.248519 [info ] [MainThread]:   application_name: dbt
+[0m21:17:54.248632 [info ] [MainThread]:   retries: 1
+[0m21:17:54.248959 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m21:17:54.560825 [debug] [MainThread]: Acquiring new postgres connection 'debug'
+[0m21:17:54.587172 [debug] [MainThread]: Using postgres connection "debug"
+[0m21:17:54.587373 [debug] [MainThread]: On debug: select 1 as id
+[0m21:17:54.587511 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m21:17:54.702643 [debug] [MainThread]: SQL status: SELECT 1 in 0.115 seconds
+[0m21:17:54.703409 [debug] [MainThread]: On debug: Close
+[0m21:17:54.703671 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m21:17:54.703893 [info ] [MainThread]: [32mAll checks passed![0m
+[0m21:17:54.875602 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": true, "command_wall_clock_time": 0.7777862, "process_in_blocks": "0", "process_kernel_time": 0.179392, "process_mem_max_rss": "135528448", "process_out_blocks": "0", "process_user_time": 0.748889}
+[0m21:17:54.875957 [debug] [MainThread]: Command `dbt debug` succeeded at 21:17:54.875905 after 0.78 seconds
+[0m21:17:54.876138 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m21:17:54.876317 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1075eec10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1083fd710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1073a8090>]}
+[0m21:17:54.876521 [debug] [MainThread]: Flushing usage events
+[0m21:17:55.060850 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m21:19:19.862111 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1083c03d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10844b1d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10844bd10>]}
+
+
+============================== 21:19:19.865257 | 2218b6aa-667e-4f4b-a593-a5186c65eb39 ==============================
+[0m21:19:19.865257 [info ] [MainThread]: Running with dbt=1.11.3
+[0m21:19:19.865628 [debug] [MainThread]: running dbt with arguments {'use_colors': 'True', 'empty': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'invocation_command': 'dbt run', 'partial_parse': 'True', 'introspect': 'True', 'log_format': 'default', 'quiet': 'False', 'target_path': 'None', 'static_parser': 'True', 'log_cache_events': 'False', 'profiles_dir': '/Users/luke/.dbt', 'warn_error': 'None', 'write_json': 'True', 'send_anonymous_usage_stats': 'True', 'log_path': '/Users/luke/Desktop/Coding Projects/oncology-data-pipeline/oncology_dbt/logs', 'use_experimental_parser': 'False', 'no_print': 'None', 'indirect_selection': 'eager', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'printer_width': '80', 'version_check': 'True'}
+[0m21:19:19.955112 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '2218b6aa-667e-4f4b-a593-a5186c65eb39', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108799b10>]}
+[0m21:19:19.980643 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '2218b6aa-667e-4f4b-a593-a5186c65eb39', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104b75690>]}
+[0m21:19:19.981297 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m21:19:20.032359 [debug] [MainThread]: checksum: 97dbd983c77ef3cec7304d97135f72c53ee20ea7ab68d67bae8e0876ff0fcdb6, vars: {}, profile: , target: , version: 1.11.3
+[0m21:19:20.032848 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m21:19:20.033065 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '2218b6aa-667e-4f4b-a593-a5186c65eb39', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109194e90>]}
+[0m21:19:20.435366 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.oncology_dbt.marts
+[0m21:19:20.437507 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '2218b6aa-667e-4f4b-a593-a5186c65eb39', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1093f8890>]}
+[0m21:19:20.463617 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/luke/Desktop/Coding Projects/oncology-data-pipeline/oncology_dbt/target/manifest.json
+[0m21:19:20.465051 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/luke/Desktop/Coding Projects/oncology-data-pipeline/oncology_dbt/target/semantic_manifest.json
+[0m21:19:20.475886 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '2218b6aa-667e-4f4b-a593-a5186c65eb39', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109b3b7d0>]}
+[0m21:19:20.476145 [info ] [MainThread]: Found 1 model, 464 macros
+[0m21:19:20.476315 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '2218b6aa-667e-4f4b-a593-a5186c65eb39', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109a4f390>]}
+[0m21:19:20.477051 [info ] [MainThread]: 
+[0m21:19:20.477209 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m21:19:20.477335 [info ] [MainThread]: 
+[0m21:19:20.477562 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m21:19:20.477982 [debug] [ThreadPool]: Acquiring new postgres connection 'list_postgres'
+[0m21:19:20.509042 [debug] [ThreadPool]: Using postgres connection "list_postgres"
+[0m21:19:20.509334 [debug] [ThreadPool]: On list_postgres: /* {"app": "dbt", "dbt_version": "1.11.3", "profile_name": "oncology_dbt", "target_name": "dev", "connection_name": "list_postgres"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m21:19:20.509483 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m21:19:20.558157 [debug] [ThreadPool]: SQL status: SELECT 4 in 0.049 seconds
+[0m21:19:20.558968 [debug] [ThreadPool]: On list_postgres: Close
+[0m21:19:20.559594 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_postgres, now list_postgres_public)
+[0m21:19:20.562544 [debug] [ThreadPool]: Using postgres connection "list_postgres_public"
+[0m21:19:20.562772 [debug] [ThreadPool]: On list_postgres_public: /* {"app": "dbt", "dbt_version": "1.11.3", "profile_name": "oncology_dbt", "target_name": "dev", "connection_name": "list_postgres_public"} */
+select
+      'postgres' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'postgres' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+    union all
+    select
+      'postgres' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'public'
+  
+[0m21:19:20.562936 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m21:19:20.580459 [debug] [ThreadPool]: SQL status: SELECT 0 in 0.017 seconds
+[0m21:19:20.581212 [debug] [ThreadPool]: On list_postgres_public: ROLLBACK
+[0m21:19:20.581782 [debug] [ThreadPool]: On list_postgres_public: Close
+[0m21:19:20.583994 [debug] [MainThread]: Using postgres connection "master"
+[0m21:19:20.584269 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.11.3", "profile_name": "oncology_dbt", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m21:19:20.584475 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m21:19:20.596796 [debug] [MainThread]: SQL status: SELECT 0 in 0.012 seconds
+[0m21:19:20.597485 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '2218b6aa-667e-4f4b-a593-a5186c65eb39', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109410310>]}
+[0m21:19:20.597763 [debug] [MainThread]: On master: ROLLBACK
+[0m21:19:20.598330 [debug] [MainThread]: On master: COMMIT
+[0m21:19:20.598522 [debug] [MainThread]: Using postgres connection "master"
+[0m21:19:20.598668 [debug] [MainThread]: On master: COMMIT
+[0m21:19:20.599488 [debug] [MainThread]: SQL status: COMMIT in 0.001 seconds
+[0m21:19:20.599634 [debug] [MainThread]: On master: Close
+[0m21:19:20.601511 [debug] [Thread-1 (]: Began running node model.oncology_dbt.stg_test
+[0m21:19:20.601838 [info ] [Thread-1 (]: 1 of 1 START sql view model public.stg_test .................................... [RUN]
+[0m21:19:20.602092 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_postgres_public, now model.oncology_dbt.stg_test)
+[0m21:19:20.602270 [debug] [Thread-1 (]: Began compiling node model.oncology_dbt.stg_test
+[0m21:19:20.605639 [debug] [Thread-1 (]: Writing injected SQL for node "model.oncology_dbt.stg_test"
+[0m21:19:20.606286 [debug] [Thread-1 (]: Began executing node model.oncology_dbt.stg_test
+[0m21:19:20.625829 [debug] [Thread-1 (]: Writing runtime sql for node "model.oncology_dbt.stg_test"
+[0m21:19:20.626700 [debug] [Thread-1 (]: Using postgres connection "model.oncology_dbt.stg_test"
+[0m21:19:20.626895 [debug] [Thread-1 (]: On model.oncology_dbt.stg_test: /* {"app": "dbt", "dbt_version": "1.11.3", "profile_name": "oncology_dbt", "target_name": "dev", "node_id": "model.oncology_dbt.stg_test"} */
+
+  create view "postgres"."public"."stg_test__dbt_tmp"
+    
+    
+  as (
+    SELECT 
+    'Hello from dbt!' as message,
+    CURRENT_TIMESTAMP as created_at
+  );
+[0m21:19:20.627063 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m21:19:20.638418 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.011 seconds
+[0m21:19:20.641675 [debug] [Thread-1 (]: Using postgres connection "model.oncology_dbt.stg_test"
+[0m21:19:20.641886 [debug] [Thread-1 (]: On model.oncology_dbt.stg_test: /* {"app": "dbt", "dbt_version": "1.11.3", "profile_name": "oncology_dbt", "target_name": "dev", "node_id": "model.oncology_dbt.stg_test"} */
+alter table "postgres"."public"."stg_test__dbt_tmp" rename to "stg_test"
+[0m21:19:20.642717 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.001 seconds
+[0m21:19:20.649627 [debug] [Thread-1 (]: On model.oncology_dbt.stg_test: COMMIT
+[0m21:19:20.649864 [debug] [Thread-1 (]: Using postgres connection "model.oncology_dbt.stg_test"
+[0m21:19:20.650017 [debug] [Thread-1 (]: On model.oncology_dbt.stg_test: COMMIT
+[0m21:19:20.652789 [debug] [Thread-1 (]: SQL status: COMMIT in 0.003 seconds
+[0m21:19:20.655520 [debug] [Thread-1 (]: Applying DROP to: "postgres"."public"."stg_test__dbt_backup"
+[0m21:19:20.657587 [debug] [Thread-1 (]: Using postgres connection "model.oncology_dbt.stg_test"
+[0m21:19:20.657768 [debug] [Thread-1 (]: On model.oncology_dbt.stg_test: /* {"app": "dbt", "dbt_version": "1.11.3", "profile_name": "oncology_dbt", "target_name": "dev", "node_id": "model.oncology_dbt.stg_test"} */
+drop view if exists "postgres"."public"."stg_test__dbt_backup" cascade
+[0m21:19:20.658483 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.001 seconds
+[0m21:19:20.659588 [debug] [Thread-1 (]: On model.oncology_dbt.stg_test: Close
+[0m21:19:20.660653 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2218b6aa-667e-4f4b-a593-a5186c65eb39', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109114090>]}
+[0m21:19:20.661000 [info ] [Thread-1 (]: 1 of 1 OK created sql view model public.stg_test ............................... [[32mCREATE VIEW[0m in 0.06s]
+[0m21:19:20.661278 [debug] [Thread-1 (]: Finished running node model.oncology_dbt.stg_test
+[0m21:19:20.661894 [debug] [MainThread]: On master: COMMIT
+[0m21:19:20.662047 [debug] [MainThread]: Using postgres connection "master"
+[0m21:19:20.662166 [debug] [MainThread]: On master: COMMIT
+[0m21:19:20.662276 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m21:19:20.670807 [debug] [MainThread]: SQL status: COMMIT in 0.008 seconds
+[0m21:19:20.671178 [debug] [MainThread]: On master: Close
+[0m21:19:20.671417 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m21:19:20.671546 [debug] [MainThread]: Connection 'model.oncology_dbt.stg_test' was properly closed.
+[0m21:19:20.671682 [info ] [MainThread]: 
+[0m21:19:20.671826 [info ] [MainThread]: Finished running 1 view model in 0 hours 0 minutes and 0.19 seconds (0.19s).
+[0m21:19:20.672107 [debug] [MainThread]: Command end result
+[0m21:19:20.681836 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/luke/Desktop/Coding Projects/oncology-data-pipeline/oncology_dbt/target/manifest.json
+[0m21:19:20.682907 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/luke/Desktop/Coding Projects/oncology-data-pipeline/oncology_dbt/target/semantic_manifest.json
+[0m21:19:20.685925 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/luke/Desktop/Coding Projects/oncology-data-pipeline/oncology_dbt/target/run_results.json
+[0m21:19:20.686101 [info ] [MainThread]: 
+[0m21:19:20.686285 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m21:19:20.686422 [info ] [MainThread]: 
+[0m21:19:20.686566 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m21:19:20.688887 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 0.8646317, "process_in_blocks": "0", "process_kernel_time": 0.242023, "process_mem_max_rss": "145637376", "process_out_blocks": "0", "process_user_time": 1.28546}
+[0m21:19:20.689225 [debug] [MainThread]: Command `dbt run` succeeded at 21:19:20.689176 after 0.87 seconds
+[0m21:19:20.689420 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108447d90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108447f50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106f4ce90>]}
+[0m21:19:20.689602 [debug] [MainThread]: Flushing usage events
+[0m21:19:20.853296 [debug] [MainThread]: An error was encountered while trying to flush usage events
