@@ -44,8 +44,6 @@ RAW → STAGING (dbt views) → MARTS (dbt tables)
 
 ## How to Run
 
-## How to Run
-
 ### Prerequisites
 - Docker Desktop
 - Python 3.11+
