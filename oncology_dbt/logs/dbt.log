@@ -7201,3 +7201,414 @@ having count(*) > 1
 [0m16:58:14.541114 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111270e90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1116054d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1035ae390>]}
 [0m16:58:14.541317 [debug] [MainThread]: Flushing usage events
 [0m16:58:14.715507 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:00:34.442163 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1129d13d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112a2e410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112a2fed0>]}
+
+
+============================== 17:00:34.446182 | 17c2cb8a-dd76-43e5-8843-5df28fda838b ==============================
+[0m17:00:34.446182 [info ] [MainThread]: Running with dbt=1.11.3
+[0m17:00:34.446557 [debug] [MainThread]: running dbt with arguments {'invocation_command': 'dbt docs generate', 'log_format': 'default', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'version_check': 'True', 'profiles_dir': '/Users/luke/.dbt', 'printer_width': '80', 'warn_error': 'None', 'cache_selected_only': 'False', 'partial_parse': 'True', 'debug': 'False', 'empty': 'None', 'target_path': 'None', 'write_json': 'True', 'no_print': 'None', 'fail_fast': 'False', 'log_path': '/Users/luke/Desktop/Coding Projects/oncology-data-pipeline/oncology_dbt/logs', 'indirect_selection': 'eager', 'introspect': 'True', 'static_parser': 'True', 'log_cache_events': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])'}
+[0m17:00:34.541939 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '17c2cb8a-dd76-43e5-8843-5df28fda838b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x113112690>]}
+[0m17:00:34.568675 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '17c2cb8a-dd76-43e5-8843-5df28fda838b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1129d2690>]}
+[0m17:00:34.569495 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m17:00:34.622756 [debug] [MainThread]: checksum: 97dbd983c77ef3cec7304d97135f72c53ee20ea7ab68d67bae8e0876ff0fcdb6, vars: {}, profile: , target: , version: 1.11.3
+[0m17:00:34.695159 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m17:00:34.695458 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m17:00:34.695622 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m17:00:34.720725 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '17c2cb8a-dd76-43e5-8843-5df28fda838b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x113a2a390>]}
+[0m17:00:34.734147 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '17c2cb8a-dd76-43e5-8843-5df28fda838b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x113e57f90>]}
+[0m17:00:34.734440 [info ] [MainThread]: Found 10 models, 23 data tests, 2 sources, 464 macros
+[0m17:00:34.734624 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '17c2cb8a-dd76-43e5-8843-5df28fda838b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x113da3650>]}
+[0m17:00:34.735929 [info ] [MainThread]: 
+[0m17:00:34.736122 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m17:00:34.736268 [info ] [MainThread]: 
+[0m17:00:34.736509 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m17:00:34.738465 [debug] [ThreadPool]: Acquiring new postgres connection 'list_postgres_public'
+[0m17:00:34.773080 [debug] [ThreadPool]: Using postgres connection "list_postgres_public"
+[0m17:00:34.773386 [debug] [ThreadPool]: On list_postgres_public: /* {"app": "dbt", "dbt_version": "1.11.3", "profile_name": "oncology_dbt", "target_name": "dev", "connection_name": "list_postgres_public"} */
+select
+      'postgres' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'postgres' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+    union all
+    select
+      'postgres' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'public'
+  
+[0m17:00:34.773564 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:00:34.821287 [debug] [ThreadPool]: SQL status: SELECT 10 in 0.048 seconds
+[0m17:00:34.822240 [debug] [ThreadPool]: On list_postgres_public: ROLLBACK
+[0m17:00:34.822739 [debug] [ThreadPool]: On list_postgres_public: Close
+[0m17:00:34.826183 [debug] [MainThread]: Using postgres connection "master"
+[0m17:00:34.826483 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.11.3", "profile_name": "oncology_dbt", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m17:00:34.826702 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m17:00:34.840074 [debug] [MainThread]: SQL status: SELECT 5 in 0.013 seconds
+[0m17:00:34.840895 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '17c2cb8a-dd76-43e5-8843-5df28fda838b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1130cc090>]}
+[0m17:00:34.841166 [debug] [MainThread]: On master: ROLLBACK
+[0m17:00:34.841791 [debug] [MainThread]: On master: Close
+[0m17:00:34.843928 [debug] [Thread-1 (]: Began running node model.oncology_dbt.fact_cancer_biomarker_evidence
+[0m17:00:34.844167 [debug] [Thread-2 (]: Began running node model.oncology_dbt.stg_cancer_associations
+[0m17:00:34.844359 [debug] [Thread-3 (]: Began running node model.oncology_dbt.stg_diseases
+[0m17:00:34.844569 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_postgres_public, now model.oncology_dbt.fact_cancer_biomarker_evidence)
+[0m17:00:34.844738 [debug] [Thread-4 (]: Began running node model.oncology_dbt.stg_drugs
+[0m17:00:34.845540 [debug] [Thread-2 (]: Acquiring new postgres connection 'model.oncology_dbt.stg_cancer_associations'
+[0m17:00:34.845787 [debug] [Thread-3 (]: Acquiring new postgres connection 'model.oncology_dbt.stg_diseases'
+[0m17:00:34.845973 [debug] [Thread-1 (]: Began compiling node model.oncology_dbt.fact_cancer_biomarker_evidence
+[0m17:00:34.846187 [debug] [Thread-4 (]: Acquiring new postgres connection 'model.oncology_dbt.stg_drugs'
+[0m17:00:34.846354 [debug] [Thread-2 (]: Began compiling node model.oncology_dbt.stg_cancer_associations
+[0m17:00:34.846522 [debug] [Thread-3 (]: Began compiling node model.oncology_dbt.stg_diseases
+[0m17:00:34.880457 [debug] [Thread-1 (]: Writing injected SQL for node "model.oncology_dbt.fact_cancer_biomarker_evidence"
+[0m17:00:34.880722 [debug] [Thread-4 (]: Began compiling node model.oncology_dbt.stg_drugs
+[0m17:00:34.882169 [debug] [Thread-2 (]: Writing injected SQL for node "model.oncology_dbt.stg_cancer_associations"
+[0m17:00:34.883332 [debug] [Thread-3 (]: Writing injected SQL for node "model.oncology_dbt.stg_diseases"
+[0m17:00:34.884642 [debug] [Thread-4 (]: Writing injected SQL for node "model.oncology_dbt.stg_drugs"
+[0m17:00:34.884988 [debug] [Thread-1 (]: Began executing node model.oncology_dbt.fact_cancer_biomarker_evidence
+[0m17:00:34.885531 [debug] [Thread-1 (]: Finished running node model.oncology_dbt.fact_cancer_biomarker_evidence
+[0m17:00:34.885695 [debug] [Thread-3 (]: Began executing node model.oncology_dbt.stg_diseases
+[0m17:00:34.885850 [debug] [Thread-2 (]: Began executing node model.oncology_dbt.stg_cancer_associations
+[0m17:00:34.886048 [debug] [Thread-1 (]: Began running node model.oncology_dbt.stg_targets
+[0m17:00:34.886251 [debug] [Thread-4 (]: Began executing node model.oncology_dbt.stg_drugs
+[0m17:00:34.886585 [debug] [Thread-3 (]: Finished running node model.oncology_dbt.stg_diseases
+[0m17:00:34.886856 [debug] [Thread-2 (]: Finished running node model.oncology_dbt.stg_cancer_associations
+[0m17:00:34.887039 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.oncology_dbt.fact_cancer_biomarker_evidence, now model.oncology_dbt.stg_targets)
+[0m17:00:34.887299 [debug] [Thread-4 (]: Finished running node model.oncology_dbt.stg_drugs
+[0m17:00:34.887472 [debug] [Thread-3 (]: Began running node model.oncology_dbt.stg_test
+[0m17:00:34.887686 [debug] [Thread-2 (]: Began running node test.oncology_dbt.not_null_fact_cancer_biomarker_evidence_evidence_id.fbba4e70d0
+[0m17:00:34.887871 [debug] [Thread-1 (]: Began compiling node model.oncology_dbt.stg_targets
+[0m17:00:34.888041 [debug] [Thread-4 (]: Began running node test.oncology_dbt.unique_fact_cancer_biomarker_evidence_evidence_id.68a9a2f257
+[0m17:00:34.888305 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.oncology_dbt.stg_diseases, now model.oncology_dbt.stg_test)
+[0m17:00:34.888481 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.oncology_dbt.stg_cancer_associations, now test.oncology_dbt.not_null_fact_cancer_biomarker_evidence_evidence_id.fbba4e70d0)
+[0m17:00:34.889632 [debug] [Thread-1 (]: Writing injected SQL for node "model.oncology_dbt.stg_targets"
+[0m17:00:34.889821 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.oncology_dbt.stg_drugs, now test.oncology_dbt.unique_fact_cancer_biomarker_evidence_evidence_id.68a9a2f257)
+[0m17:00:34.889995 [debug] [Thread-3 (]: Began compiling node model.oncology_dbt.stg_test
+[0m17:00:34.890162 [debug] [Thread-2 (]: Began compiling node test.oncology_dbt.not_null_fact_cancer_biomarker_evidence_evidence_id.fbba4e70d0
+[0m17:00:34.890354 [debug] [Thread-4 (]: Began compiling node test.oncology_dbt.unique_fact_cancer_biomarker_evidence_evidence_id.68a9a2f257
+[0m17:00:34.891214 [debug] [Thread-3 (]: Writing injected SQL for node "model.oncology_dbt.stg_test"
+[0m17:00:34.896152 [debug] [Thread-2 (]: Writing injected SQL for node "test.oncology_dbt.not_null_fact_cancer_biomarker_evidence_evidence_id.fbba4e70d0"
+[0m17:00:34.898880 [debug] [Thread-4 (]: Writing injected SQL for node "test.oncology_dbt.unique_fact_cancer_biomarker_evidence_evidence_id.68a9a2f257"
+[0m17:00:34.899069 [debug] [Thread-1 (]: Began executing node model.oncology_dbt.stg_targets
+[0m17:00:34.899540 [debug] [Thread-1 (]: Finished running node model.oncology_dbt.stg_targets
+[0m17:00:34.899820 [debug] [Thread-1 (]: Began running node model.oncology_dbt.dim_diseases
+[0m17:00:34.900031 [debug] [Thread-4 (]: Began executing node test.oncology_dbt.unique_fact_cancer_biomarker_evidence_evidence_id.68a9a2f257
+[0m17:00:34.900194 [debug] [Thread-3 (]: Began executing node model.oncology_dbt.stg_test
+[0m17:00:34.900375 [debug] [Thread-2 (]: Began executing node test.oncology_dbt.not_null_fact_cancer_biomarker_evidence_evidence_id.fbba4e70d0
+[0m17:00:34.900556 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.oncology_dbt.stg_targets, now model.oncology_dbt.dim_diseases)
+[0m17:00:34.900834 [debug] [Thread-4 (]: Finished running node test.oncology_dbt.unique_fact_cancer_biomarker_evidence_evidence_id.68a9a2f257
+[0m17:00:34.901099 [debug] [Thread-3 (]: Finished running node model.oncology_dbt.stg_test
+[0m17:00:34.901356 [debug] [Thread-2 (]: Finished running node test.oncology_dbt.not_null_fact_cancer_biomarker_evidence_evidence_id.fbba4e70d0
+[0m17:00:34.901515 [debug] [Thread-1 (]: Began compiling node model.oncology_dbt.dim_diseases
+[0m17:00:34.901690 [debug] [Thread-4 (]: Began running node model.oncology_dbt.fact_target_disease_associations
+[0m17:00:34.901871 [debug] [Thread-3 (]: Began running node model.oncology_dbt.dim_drugs
+[0m17:00:34.902048 [debug] [Thread-2 (]: Began running node model.oncology_dbt.dim_targets
+[0m17:00:34.903281 [debug] [Thread-1 (]: Writing injected SQL for node "model.oncology_dbt.dim_diseases"
+[0m17:00:34.903469 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.oncology_dbt.unique_fact_cancer_biomarker_evidence_evidence_id.68a9a2f257, now model.oncology_dbt.fact_target_disease_associations)
+[0m17:00:34.903650 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.oncology_dbt.stg_test, now model.oncology_dbt.dim_drugs)
+[0m17:00:34.903826 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.oncology_dbt.not_null_fact_cancer_biomarker_evidence_evidence_id.fbba4e70d0, now model.oncology_dbt.dim_targets)
+[0m17:00:34.904028 [debug] [Thread-4 (]: Began compiling node model.oncology_dbt.fact_target_disease_associations
+[0m17:00:34.904204 [debug] [Thread-3 (]: Began compiling node model.oncology_dbt.dim_drugs
+[0m17:00:34.904376 [debug] [Thread-2 (]: Began compiling node model.oncology_dbt.dim_targets
+[0m17:00:34.904514 [debug] [Thread-1 (]: Began executing node model.oncology_dbt.dim_diseases
+[0m17:00:34.905632 [debug] [Thread-4 (]: Writing injected SQL for node "model.oncology_dbt.fact_target_disease_associations"
+[0m17:00:34.906713 [debug] [Thread-3 (]: Writing injected SQL for node "model.oncology_dbt.dim_drugs"
+[0m17:00:34.908674 [debug] [Thread-2 (]: Writing injected SQL for node "model.oncology_dbt.dim_targets"
+[0m17:00:34.908971 [debug] [Thread-1 (]: Finished running node model.oncology_dbt.dim_diseases
+[0m17:00:34.909319 [debug] [Thread-4 (]: Began executing node model.oncology_dbt.fact_target_disease_associations
+[0m17:00:34.909486 [debug] [Thread-3 (]: Began executing node model.oncology_dbt.dim_drugs
+[0m17:00:34.909732 [debug] [Thread-1 (]: Began running node test.oncology_dbt.not_null_dim_diseases_disease_id.6e70fd8128
+[0m17:00:34.910062 [debug] [Thread-4 (]: Finished running node model.oncology_dbt.fact_target_disease_associations
+[0m17:00:34.910207 [debug] [Thread-2 (]: Began executing node model.oncology_dbt.dim_targets
+[0m17:00:34.910517 [debug] [Thread-3 (]: Finished running node model.oncology_dbt.dim_drugs
+[0m17:00:34.910710 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.oncology_dbt.dim_diseases, now test.oncology_dbt.not_null_dim_diseases_disease_id.6e70fd8128)
+[0m17:00:34.910896 [debug] [Thread-4 (]: Began running node test.oncology_dbt.not_null_dim_diseases_disease_name.1b14676424
+[0m17:00:34.911220 [debug] [Thread-2 (]: Finished running node model.oncology_dbt.dim_targets
+[0m17:00:34.911388 [debug] [Thread-3 (]: Began running node test.oncology_dbt.relationships_fact_cancer_biomarker_evidence_disease_id__disease_id__ref_dim_diseases_.38928842dd
+[0m17:00:34.911602 [debug] [Thread-1 (]: Began compiling node test.oncology_dbt.not_null_dim_diseases_disease_id.6e70fd8128
+[0m17:00:34.911767 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.oncology_dbt.fact_target_disease_associations, now test.oncology_dbt.not_null_dim_diseases_disease_name.1b14676424)
+[0m17:00:34.911935 [debug] [Thread-2 (]: Began running node test.oncology_dbt.unique_dim_diseases_disease_id.e7d52f60e9
+[0m17:00:34.912153 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.oncology_dbt.dim_drugs, now test.oncology_dbt.relationships_fact_cancer_biomarker_evidence_disease_id__disease_id__ref_dim_diseases_.38928842dd)
+[0m17:00:34.913807 [debug] [Thread-1 (]: Writing injected SQL for node "test.oncology_dbt.not_null_dim_diseases_disease_id.6e70fd8128"
+[0m17:00:34.913975 [debug] [Thread-4 (]: Began compiling node test.oncology_dbt.not_null_dim_diseases_disease_name.1b14676424
+[0m17:00:34.914148 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.oncology_dbt.dim_targets, now test.oncology_dbt.unique_dim_diseases_disease_id.e7d52f60e9)
+[0m17:00:34.914316 [debug] [Thread-3 (]: Began compiling node test.oncology_dbt.relationships_fact_cancer_biomarker_evidence_disease_id__disease_id__ref_dim_diseases_.38928842dd
+[0m17:00:34.916004 [debug] [Thread-4 (]: Writing injected SQL for node "test.oncology_dbt.not_null_dim_diseases_disease_name.1b14676424"
+[0m17:00:34.916168 [debug] [Thread-2 (]: Began compiling node test.oncology_dbt.unique_dim_diseases_disease_id.e7d52f60e9
+[0m17:00:34.919499 [debug] [Thread-3 (]: Writing injected SQL for node "test.oncology_dbt.relationships_fact_cancer_biomarker_evidence_disease_id__disease_id__ref_dim_diseases_.38928842dd"
+[0m17:00:34.919692 [debug] [Thread-1 (]: Began executing node test.oncology_dbt.not_null_dim_diseases_disease_id.6e70fd8128
+[0m17:00:34.921403 [debug] [Thread-2 (]: Writing injected SQL for node "test.oncology_dbt.unique_dim_diseases_disease_id.e7d52f60e9"
+[0m17:00:34.921776 [debug] [Thread-1 (]: Finished running node test.oncology_dbt.not_null_dim_diseases_disease_id.6e70fd8128
+[0m17:00:34.921939 [debug] [Thread-4 (]: Began executing node test.oncology_dbt.not_null_dim_diseases_disease_name.1b14676424
+[0m17:00:34.922183 [debug] [Thread-3 (]: Began executing node test.oncology_dbt.relationships_fact_cancer_biomarker_evidence_disease_id__disease_id__ref_dim_diseases_.38928842dd
+[0m17:00:34.922357 [debug] [Thread-1 (]: Began running node test.oncology_dbt.not_null_fact_target_disease_associations_association_score.3dc0f00f99
+[0m17:00:34.922665 [debug] [Thread-4 (]: Finished running node test.oncology_dbt.not_null_dim_diseases_disease_name.1b14676424
+[0m17:00:34.922811 [debug] [Thread-2 (]: Began executing node test.oncology_dbt.unique_dim_diseases_disease_id.e7d52f60e9
+[0m17:00:34.923173 [debug] [Thread-3 (]: Finished running node test.oncology_dbt.relationships_fact_cancer_biomarker_evidence_disease_id__disease_id__ref_dim_diseases_.38928842dd
+[0m17:00:34.923358 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.oncology_dbt.not_null_dim_diseases_disease_id.6e70fd8128, now test.oncology_dbt.not_null_fact_target_disease_associations_association_score.3dc0f00f99)
+[0m17:00:34.923550 [debug] [Thread-4 (]: Began running node test.oncology_dbt.not_null_fact_target_disease_associations_disease_id.814c2e0840
+[0m17:00:34.923820 [debug] [Thread-2 (]: Finished running node test.oncology_dbt.unique_dim_diseases_disease_id.e7d52f60e9
+[0m17:00:34.923989 [debug] [Thread-3 (]: Began running node test.oncology_dbt.not_null_fact_target_disease_associations_evidence_count.639aa7bb33
+[0m17:00:34.924166 [debug] [Thread-1 (]: Began compiling node test.oncology_dbt.not_null_fact_target_disease_associations_association_score.3dc0f00f99
+[0m17:00:34.924338 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.oncology_dbt.not_null_dim_diseases_disease_name.1b14676424, now test.oncology_dbt.not_null_fact_target_disease_associations_disease_id.814c2e0840)
+[0m17:00:34.924514 [debug] [Thread-2 (]: Began running node test.oncology_dbt.not_null_fact_target_disease_associations_target_id.5f05871c09
+[0m17:00:34.924693 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.oncology_dbt.relationships_fact_cancer_biomarker_evidence_disease_id__disease_id__ref_dim_diseases_.38928842dd, now test.oncology_dbt.not_null_fact_target_disease_associations_evidence_count.639aa7bb33)
+[0m17:00:34.926393 [debug] [Thread-1 (]: Writing injected SQL for node "test.oncology_dbt.not_null_fact_target_disease_associations_association_score.3dc0f00f99"
+[0m17:00:34.926565 [debug] [Thread-4 (]: Began compiling node test.oncology_dbt.not_null_fact_target_disease_associations_disease_id.814c2e0840
+[0m17:00:34.926736 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.oncology_dbt.unique_dim_diseases_disease_id.e7d52f60e9, now test.oncology_dbt.not_null_fact_target_disease_associations_target_id.5f05871c09)
+[0m17:00:34.926900 [debug] [Thread-3 (]: Began compiling node test.oncology_dbt.not_null_fact_target_disease_associations_evidence_count.639aa7bb33
+[0m17:00:34.928577 [debug] [Thread-4 (]: Writing injected SQL for node "test.oncology_dbt.not_null_fact_target_disease_associations_disease_id.814c2e0840"
+[0m17:00:34.928746 [debug] [Thread-2 (]: Began compiling node test.oncology_dbt.not_null_fact_target_disease_associations_target_id.5f05871c09
+[0m17:00:34.930350 [debug] [Thread-3 (]: Writing injected SQL for node "test.oncology_dbt.not_null_fact_target_disease_associations_evidence_count.639aa7bb33"
+[0m17:00:34.930545 [debug] [Thread-1 (]: Began executing node test.oncology_dbt.not_null_fact_target_disease_associations_association_score.3dc0f00f99
+[0m17:00:34.932110 [debug] [Thread-2 (]: Writing injected SQL for node "test.oncology_dbt.not_null_fact_target_disease_associations_target_id.5f05871c09"
+[0m17:00:34.932455 [debug] [Thread-1 (]: Finished running node test.oncology_dbt.not_null_fact_target_disease_associations_association_score.3dc0f00f99
+[0m17:00:34.932615 [debug] [Thread-4 (]: Began executing node test.oncology_dbt.not_null_fact_target_disease_associations_disease_id.814c2e0840
+[0m17:00:34.932826 [debug] [Thread-3 (]: Began executing node test.oncology_dbt.not_null_fact_target_disease_associations_evidence_count.639aa7bb33
+[0m17:00:34.932991 [debug] [Thread-1 (]: Began running node test.oncology_dbt.relationships_fact_target_disease_associations_disease_id__disease_id__ref_dim_diseases_.c37ebf21ed
+[0m17:00:34.933310 [debug] [Thread-4 (]: Finished running node test.oncology_dbt.not_null_fact_target_disease_associations_disease_id.814c2e0840
+[0m17:00:34.933455 [debug] [Thread-2 (]: Began executing node test.oncology_dbt.not_null_fact_target_disease_associations_target_id.5f05871c09
+[0m17:00:34.933717 [debug] [Thread-3 (]: Finished running node test.oncology_dbt.not_null_fact_target_disease_associations_evidence_count.639aa7bb33
+[0m17:00:34.933887 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.oncology_dbt.not_null_fact_target_disease_associations_association_score.3dc0f00f99, now test.oncology_dbt.relationships_fact_target_disease_associations_disease_id__disease_id__ref_dim_diseases_.c37ebf21ed)
+[0m17:00:34.934072 [debug] [Thread-4 (]: Began running node test.oncology_dbt.test_association_scores_valid_range
+[0m17:00:34.934322 [debug] [Thread-2 (]: Finished running node test.oncology_dbt.not_null_fact_target_disease_associations_target_id.5f05871c09
+[0m17:00:34.934498 [debug] [Thread-3 (]: Began running node test.oncology_dbt.accepted_values_dim_drugs_drug_type__compound__family.c083584fa9
+[0m17:00:34.934680 [debug] [Thread-1 (]: Began compiling node test.oncology_dbt.relationships_fact_target_disease_associations_disease_id__disease_id__ref_dim_diseases_.c37ebf21ed
+[0m17:00:34.934856 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.oncology_dbt.not_null_fact_target_disease_associations_disease_id.814c2e0840, now test.oncology_dbt.test_association_scores_valid_range)
+[0m17:00:34.935039 [debug] [Thread-2 (]: Began running node test.oncology_dbt.not_null_dim_drugs_drug_identifier.43f5b46187
+[0m17:00:34.935215 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.oncology_dbt.not_null_fact_target_disease_associations_evidence_count.639aa7bb33, now test.oncology_dbt.accepted_values_dim_drugs_drug_type__compound__family.c083584fa9)
+[0m17:00:34.937266 [debug] [Thread-1 (]: Writing injected SQL for node "test.oncology_dbt.relationships_fact_target_disease_associations_disease_id__disease_id__ref_dim_diseases_.c37ebf21ed"
+[0m17:00:34.937442 [debug] [Thread-4 (]: Began compiling node test.oncology_dbt.test_association_scores_valid_range
+[0m17:00:34.937613 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.oncology_dbt.not_null_fact_target_disease_associations_target_id.5f05871c09, now test.oncology_dbt.not_null_dim_drugs_drug_identifier.43f5b46187)
+[0m17:00:34.937790 [debug] [Thread-3 (]: Began compiling node test.oncology_dbt.accepted_values_dim_drugs_drug_type__compound__family.c083584fa9
+[0m17:00:34.939813 [debug] [Thread-4 (]: Writing injected SQL for node "test.oncology_dbt.test_association_scores_valid_range"
+[0m17:00:34.939988 [debug] [Thread-2 (]: Began compiling node test.oncology_dbt.not_null_dim_drugs_drug_identifier.43f5b46187
+[0m17:00:34.943571 [debug] [Thread-3 (]: Writing injected SQL for node "test.oncology_dbt.accepted_values_dim_drugs_drug_type__compound__family.c083584fa9"
+[0m17:00:34.945397 [debug] [Thread-2 (]: Writing injected SQL for node "test.oncology_dbt.not_null_dim_drugs_drug_identifier.43f5b46187"
+[0m17:00:34.945601 [debug] [Thread-1 (]: Began executing node test.oncology_dbt.relationships_fact_target_disease_associations_disease_id__disease_id__ref_dim_diseases_.c37ebf21ed
+[0m17:00:34.945859 [debug] [Thread-4 (]: Began executing node test.oncology_dbt.test_association_scores_valid_range
+[0m17:00:34.946176 [debug] [Thread-1 (]: Finished running node test.oncology_dbt.relationships_fact_target_disease_associations_disease_id__disease_id__ref_dim_diseases_.c37ebf21ed
+[0m17:00:34.946340 [debug] [Thread-3 (]: Began executing node test.oncology_dbt.accepted_values_dim_drugs_drug_type__compound__family.c083584fa9
+[0m17:00:34.946617 [debug] [Thread-4 (]: Finished running node test.oncology_dbt.test_association_scores_valid_range
+[0m17:00:34.946805 [debug] [Thread-1 (]: Began running node test.oncology_dbt.not_null_dim_drugs_drug_name.a5daddaaa6
+[0m17:00:34.946947 [debug] [Thread-2 (]: Began executing node test.oncology_dbt.not_null_dim_drugs_drug_identifier.43f5b46187
+[0m17:00:34.947216 [debug] [Thread-3 (]: Finished running node test.oncology_dbt.accepted_values_dim_drugs_drug_type__compound__family.c083584fa9
+[0m17:00:34.947382 [debug] [Thread-4 (]: Began running node test.oncology_dbt.not_null_dim_drugs_drug_type.2d8b44734c
+[0m17:00:34.947560 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.oncology_dbt.relationships_fact_target_disease_associations_disease_id__disease_id__ref_dim_diseases_.c37ebf21ed, now test.oncology_dbt.not_null_dim_drugs_drug_name.a5daddaaa6)
+[0m17:00:34.947815 [debug] [Thread-2 (]: Finished running node test.oncology_dbt.not_null_dim_drugs_drug_identifier.43f5b46187
+[0m17:00:34.947987 [debug] [Thread-3 (]: Began running node test.oncology_dbt.relationships_fact_cancer_biomarker_evidence_drug_identifier__drug_identifier__ref_dim_drugs_.d4218653a4
+[0m17:00:34.948158 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.oncology_dbt.test_association_scores_valid_range, now test.oncology_dbt.not_null_dim_drugs_drug_type.2d8b44734c)
+[0m17:00:34.948314 [debug] [Thread-1 (]: Began compiling node test.oncology_dbt.not_null_dim_drugs_drug_name.a5daddaaa6
+[0m17:00:34.948477 [debug] [Thread-2 (]: Began running node test.oncology_dbt.unique_dim_drugs_drug_identifier.ab221c0b52
+[0m17:00:34.948651 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.oncology_dbt.accepted_values_dim_drugs_drug_type__compound__family.c083584fa9, now test.oncology_dbt.relationships_fact_cancer_biomarker_evidence_drug_identifier__drug_identifier__ref_dim_drugs_.d4218653a4)
+[0m17:00:34.948813 [debug] [Thread-4 (]: Began compiling node test.oncology_dbt.not_null_dim_drugs_drug_type.2d8b44734c
+[0m17:00:34.950485 [debug] [Thread-1 (]: Writing injected SQL for node "test.oncology_dbt.not_null_dim_drugs_drug_name.a5daddaaa6"
+[0m17:00:34.950663 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.oncology_dbt.not_null_dim_drugs_drug_identifier.43f5b46187, now test.oncology_dbt.unique_dim_drugs_drug_identifier.ab221c0b52)
+[0m17:00:34.950836 [debug] [Thread-3 (]: Began compiling node test.oncology_dbt.relationships_fact_cancer_biomarker_evidence_drug_identifier__drug_identifier__ref_dim_drugs_.d4218653a4
+[0m17:00:34.952524 [debug] [Thread-4 (]: Writing injected SQL for node "test.oncology_dbt.not_null_dim_drugs_drug_type.2d8b44734c"
+[0m17:00:34.952751 [debug] [Thread-2 (]: Began compiling node test.oncology_dbt.unique_dim_drugs_drug_identifier.ab221c0b52
+[0m17:00:34.955077 [debug] [Thread-3 (]: Writing injected SQL for node "test.oncology_dbt.relationships_fact_cancer_biomarker_evidence_drug_identifier__drug_identifier__ref_dim_drugs_.d4218653a4"
+[0m17:00:34.956890 [debug] [Thread-2 (]: Writing injected SQL for node "test.oncology_dbt.unique_dim_drugs_drug_identifier.ab221c0b52"
+[0m17:00:34.957108 [debug] [Thread-1 (]: Began executing node test.oncology_dbt.not_null_dim_drugs_drug_name.a5daddaaa6
+[0m17:00:34.957333 [debug] [Thread-4 (]: Began executing node test.oncology_dbt.not_null_dim_drugs_drug_type.2d8b44734c
+[0m17:00:34.957626 [debug] [Thread-1 (]: Finished running node test.oncology_dbt.not_null_dim_drugs_drug_name.a5daddaaa6
+[0m17:00:34.957925 [debug] [Thread-4 (]: Finished running node test.oncology_dbt.not_null_dim_drugs_drug_type.2d8b44734c
+[0m17:00:34.958081 [debug] [Thread-2 (]: Began executing node test.oncology_dbt.unique_dim_drugs_drug_identifier.ab221c0b52
+[0m17:00:34.958238 [debug] [Thread-3 (]: Began executing node test.oncology_dbt.relationships_fact_cancer_biomarker_evidence_drug_identifier__drug_identifier__ref_dim_drugs_.d4218653a4
+[0m17:00:34.958415 [debug] [Thread-1 (]: Began running node test.oncology_dbt.not_null_dim_targets_gene_symbol.fdbce74f53
+[0m17:00:34.958611 [debug] [Thread-4 (]: Began running node test.oncology_dbt.not_null_dim_targets_target_id.8e742f6216
+[0m17:00:34.958886 [debug] [Thread-2 (]: Finished running node test.oncology_dbt.unique_dim_drugs_drug_identifier.ab221c0b52
+[0m17:00:34.959145 [debug] [Thread-3 (]: Finished running node test.oncology_dbt.relationships_fact_cancer_biomarker_evidence_drug_identifier__drug_identifier__ref_dim_drugs_.d4218653a4
+[0m17:00:34.959322 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.oncology_dbt.not_null_dim_drugs_drug_name.a5daddaaa6, now test.oncology_dbt.not_null_dim_targets_gene_symbol.fdbce74f53)
+[0m17:00:34.959502 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.oncology_dbt.not_null_dim_drugs_drug_type.2d8b44734c, now test.oncology_dbt.not_null_dim_targets_target_id.8e742f6216)
+[0m17:00:34.959762 [debug] [Thread-2 (]: Began running node test.oncology_dbt.relationships_fact_cancer_biomarker_evidence_target_id__target_id__ref_dim_targets_.bb9b8de8df
+[0m17:00:34.959947 [debug] [Thread-3 (]: Began running node test.oncology_dbt.relationships_fact_target_disease_associations_target_id__target_id__ref_dim_targets_.8180698d50
+[0m17:00:34.960114 [debug] [Thread-1 (]: Began compiling node test.oncology_dbt.not_null_dim_targets_gene_symbol.fdbce74f53
+[0m17:00:34.960267 [debug] [Thread-4 (]: Began compiling node test.oncology_dbt.not_null_dim_targets_target_id.8e742f6216
+[0m17:00:34.960437 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.oncology_dbt.unique_dim_drugs_drug_identifier.ab221c0b52, now test.oncology_dbt.relationships_fact_cancer_biomarker_evidence_target_id__target_id__ref_dim_targets_.bb9b8de8df)
+[0m17:00:34.960616 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.oncology_dbt.relationships_fact_cancer_biomarker_evidence_drug_identifier__drug_identifier__ref_dim_drugs_.d4218653a4, now test.oncology_dbt.relationships_fact_target_disease_associations_target_id__target_id__ref_dim_targets_.8180698d50)
+[0m17:00:34.962255 [debug] [Thread-1 (]: Writing injected SQL for node "test.oncology_dbt.not_null_dim_targets_gene_symbol.fdbce74f53"
+[0m17:00:34.963856 [debug] [Thread-4 (]: Writing injected SQL for node "test.oncology_dbt.not_null_dim_targets_target_id.8e742f6216"
+[0m17:00:34.964027 [debug] [Thread-2 (]: Began compiling node test.oncology_dbt.relationships_fact_cancer_biomarker_evidence_target_id__target_id__ref_dim_targets_.bb9b8de8df
+[0m17:00:34.964189 [debug] [Thread-3 (]: Began compiling node test.oncology_dbt.relationships_fact_target_disease_associations_target_id__target_id__ref_dim_targets_.8180698d50
+[0m17:00:34.966587 [debug] [Thread-2 (]: Writing injected SQL for node "test.oncology_dbt.relationships_fact_cancer_biomarker_evidence_target_id__target_id__ref_dim_targets_.bb9b8de8df"
+[0m17:00:34.969681 [debug] [Thread-3 (]: Writing injected SQL for node "test.oncology_dbt.relationships_fact_target_disease_associations_target_id__target_id__ref_dim_targets_.8180698d50"
+[0m17:00:34.969877 [debug] [Thread-4 (]: Began executing node test.oncology_dbt.not_null_dim_targets_target_id.8e742f6216
+[0m17:00:34.970039 [debug] [Thread-1 (]: Began executing node test.oncology_dbt.not_null_dim_targets_gene_symbol.fdbce74f53
+[0m17:00:34.970365 [debug] [Thread-4 (]: Finished running node test.oncology_dbt.not_null_dim_targets_target_id.8e742f6216
+[0m17:00:34.970671 [debug] [Thread-1 (]: Finished running node test.oncology_dbt.not_null_dim_targets_gene_symbol.fdbce74f53
+[0m17:00:34.970892 [debug] [Thread-4 (]: Began running node test.oncology_dbt.unique_dim_targets_target_id.1ec1eff285
+[0m17:00:34.971045 [debug] [Thread-3 (]: Began executing node test.oncology_dbt.relationships_fact_target_disease_associations_target_id__target_id__ref_dim_targets_.8180698d50
+[0m17:00:34.971190 [debug] [Thread-2 (]: Began executing node test.oncology_dbt.relationships_fact_cancer_biomarker_evidence_target_id__target_id__ref_dim_targets_.bb9b8de8df
+[0m17:00:34.971418 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.oncology_dbt.not_null_dim_targets_target_id.8e742f6216, now test.oncology_dbt.unique_dim_targets_target_id.1ec1eff285)
+[0m17:00:34.971691 [debug] [Thread-3 (]: Finished running node test.oncology_dbt.relationships_fact_target_disease_associations_target_id__target_id__ref_dim_targets_.8180698d50
+[0m17:00:34.971952 [debug] [Thread-2 (]: Finished running node test.oncology_dbt.relationships_fact_cancer_biomarker_evidence_target_id__target_id__ref_dim_targets_.bb9b8de8df
+[0m17:00:34.972107 [debug] [Thread-4 (]: Began compiling node test.oncology_dbt.unique_dim_targets_target_id.1ec1eff285
+[0m17:00:34.973822 [debug] [Thread-4 (]: Writing injected SQL for node "test.oncology_dbt.unique_dim_targets_target_id.1ec1eff285"
+[0m17:00:34.974107 [debug] [Thread-4 (]: Began executing node test.oncology_dbt.unique_dim_targets_target_id.1ec1eff285
+[0m17:00:34.974358 [debug] [Thread-4 (]: Finished running node test.oncology_dbt.unique_dim_targets_target_id.1ec1eff285
+[0m17:00:34.974848 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:00:34.974992 [debug] [MainThread]: Connection 'test.oncology_dbt.not_null_dim_targets_gene_symbol.fdbce74f53' was properly closed.
+[0m17:00:34.975116 [debug] [MainThread]: Connection 'test.oncology_dbt.relationships_fact_cancer_biomarker_evidence_target_id__target_id__ref_dim_targets_.bb9b8de8df' was properly closed.
+[0m17:00:34.975236 [debug] [MainThread]: Connection 'test.oncology_dbt.relationships_fact_target_disease_associations_target_id__target_id__ref_dim_targets_.8180698d50' was properly closed.
+[0m17:00:34.975354 [debug] [MainThread]: Connection 'test.oncology_dbt.unique_dim_targets_target_id.1ec1eff285' was properly closed.
+[0m17:00:34.976880 [debug] [MainThread]: Command end result
+[0m17:00:35.020720 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/luke/Desktop/Coding Projects/oncology-data-pipeline/oncology_dbt/target/manifest.json
+[0m17:00:35.021969 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/luke/Desktop/Coding Projects/oncology-data-pipeline/oncology_dbt/target/semantic_manifest.json
+[0m17:00:35.025254 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/luke/Desktop/Coding Projects/oncology-data-pipeline/oncology_dbt/target/run_results.json
+[0m17:00:35.029519 [debug] [MainThread]: Acquiring new postgres connection 'generate_catalog'
+[0m17:00:35.029686 [info ] [MainThread]: Building catalog
+[0m17:00:35.033892 [debug] [ThreadPool]: Acquiring new postgres connection 'postgres.information_schema'
+[0m17:00:35.037554 [debug] [ThreadPool]: Using postgres connection "postgres.information_schema"
+[0m17:00:35.037905 [debug] [ThreadPool]: On postgres.information_schema: /* {"app": "dbt", "dbt_version": "1.11.3", "profile_name": "oncology_dbt", "target_name": "dev", "connection_name": "postgres.information_schema"} */
+
+    
+    
+
+    select
+        'postgres' as table_database,
+        sch.nspname as table_schema,
+        tbl.relname as table_name,
+        case tbl.relkind
+            when 'v' then 'VIEW'
+            when 'm' then 'MATERIALIZED VIEW'
+            else 'BASE TABLE'
+        end as table_type,
+        tbl_desc.description as table_comment,
+        col.attname as column_name,
+        col.attnum as column_index,
+        pg_catalog.format_type(col.atttypid, col.atttypmod) as column_type,
+        col_desc.description as column_comment,
+        pg_get_userbyid(tbl.relowner) as table_owner
+
+    from pg_catalog.pg_namespace sch
+    join pg_catalog.pg_class tbl on tbl.relnamespace = sch.oid
+    join pg_catalog.pg_attribute col on col.attrelid = tbl.oid
+    left outer join pg_catalog.pg_description tbl_desc on (tbl_desc.objoid = tbl.oid and tbl_desc.objsubid = 0)
+    left outer join pg_catalog.pg_description col_desc on (col_desc.objoid = tbl.oid and col_desc.objsubid = col.attnum)
+    where ((upper(sch.nspname) = upper('public') and
+           upper(tbl.relname) = upper('fact_cancer_biomarker_evidence')) or (upper(sch.nspname) = upper('public') and
+           upper(tbl.relname) = upper('fact_target_disease_associations')) or (upper(sch.nspname) = upper('public') and
+           upper(tbl.relname) = upper('stg_targets')) or (upper(sch.nspname) = upper('public') and
+           upper(tbl.relname) = upper('stg_cancer_associations')) or (upper(sch.nspname) = upper('public') and
+           upper(tbl.relname) = upper('dim_drugs')) or (upper(sch.nspname) = upper('public') and
+           upper(tbl.relname) = upper('stg_diseases')) or (upper(sch.nspname) = upper('public') and
+           upper(tbl.relname) = upper('stg_test')) or (upper(sch.nspname) = upper('public') and
+           upper(tbl.relname) = upper('dim_diseases')) or (upper(sch.nspname) = upper('raw') and
+           upper(tbl.relname) = upper('biomarkers')) or (upper(sch.nspname) = upper('public') and
+           upper(tbl.relname) = upper('stg_drugs')) or (upper(sch.nspname) = upper('raw') and
+           upper(tbl.relname) = upper('associations')) or (upper(sch.nspname) = upper('public') and
+           upper(tbl.relname) = upper('dim_targets')))
+      and not pg_is_other_temp_schema(sch.oid) -- not a temporary schema belonging to another session
+      and tbl.relpersistence in ('p', 'u') -- [p]ermanent table or [u]nlogged table. Exclude [t]emporary tables
+      and tbl.relkind in ('r', 'v', 'f', 'p', 'm') -- o[r]dinary table, [v]iew, [f]oreign table, [p]artitioned table, [m]aterialized view. Other values are [i]ndex, [S]equence, [c]omposite type, [t]OAST table
+      and col.attnum > 0 -- negative numbers are used for system columns such as oid
+      and not col.attisdropped -- column as not been dropped
+
+    order by
+        sch.nspname,
+        tbl.relname,
+        col.attnum
+[0m17:00:35.038142 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:00:35.055922 [debug] [ThreadPool]: SQL status: SELECT 60 in 0.018 seconds
+[0m17:00:35.057751 [debug] [ThreadPool]: On postgres.information_schema: ROLLBACK
+[0m17:00:35.058394 [debug] [ThreadPool]: On postgres.information_schema: Close
+[0m17:00:35.064740 [debug] [MainThread]: Wrote artifact CatalogArtifact to /Users/luke/Desktop/Coding Projects/oncology-data-pipeline/oncology_dbt/target/catalog.json
+[0m17:00:35.077453 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/luke/Desktop/Coding Projects/oncology-data-pipeline/oncology_dbt/target/manifest.json
+[0m17:00:35.078336 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/luke/Desktop/Coding Projects/oncology-data-pipeline/oncology_dbt/target/semantic_manifest.json
+[0m17:00:35.078502 [info ] [MainThread]: Catalog written to /Users/luke/Desktop/Coding Projects/oncology-data-pipeline/oncology_dbt/target/catalog.json
+[0m17:00:35.080645 [debug] [MainThread]: Resource report: {"command_name": "generate", "command_success": true, "command_wall_clock_time": 0.680453, "process_in_blocks": "0", "process_kernel_time": 0.243651, "process_mem_max_rss": "145063936", "process_out_blocks": "0", "process_user_time": 1.073986}
+[0m17:00:35.080925 [debug] [MainThread]: Command `dbt docs generate` succeeded at 17:00:35.080878 after 0.68 seconds
+[0m17:00:35.081094 [debug] [MainThread]: Connection 'generate_catalog' was properly closed.
+[0m17:00:35.081224 [debug] [MainThread]: Connection 'postgres.information_schema' was properly closed.
+[0m17:00:35.081386 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107749b50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104d91610>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104c12410>]}
+[0m17:00:35.081577 [debug] [MainThread]: Flushing usage events
+[0m17:00:35.286650 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:00:45.641505 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x110fd0910>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111864350>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111864b90>]}
+
+
+============================== 17:00:45.644075 | 116bc081-82d2-4b22-8679-5aad7130d488 ==============================
+[0m17:00:45.644075 [info ] [MainThread]: Running with dbt=1.11.3
+[0m17:00:45.644389 [debug] [MainThread]: running dbt with arguments {'fail_fast': 'False', 'static_parser': 'True', 'log_cache_events': 'False', 'write_json': 'True', 'empty': 'None', 'introspect': 'True', 'log_format': 'default', 'invocation_command': 'dbt docs serve', 'cache_selected_only': 'False', 'debug': 'False', 'quiet': 'False', 'printer_width': '80', 'version_check': 'True', 'partial_parse': 'True', 'profiles_dir': '/Users/luke/.dbt', 'use_experimental_parser': 'False', 'send_anonymous_usage_stats': 'True', 'no_print': 'None', 'target_path': 'None', 'indirect_selection': 'eager', 'use_colors': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'warn_error': 'None', 'log_path': '/Users/luke/Desktop/Coding Projects/oncology-data-pipeline/oncology_dbt/logs'}
+[0m17:00:45.733154 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '116bc081-82d2-4b22-8679-5aad7130d488', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111f9f510>]}
+[0m17:00:45.758170 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '116bc081-82d2-4b22-8679-5aad7130d488', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1046fe010>]}
+[0m17:05:06.974256 [error] [MainThread]: Encountered an error:
+
+[0m17:05:06.985404 [error] [MainThread]: Traceback (most recent call last):
+  File "/opt/anaconda3/envs/oncology/lib/python3.11/site-packages/dbt/cli/requires.py", line 182, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/oncology/lib/python3.11/site-packages/dbt/cli/requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/oncology/lib/python3.11/site-packages/dbt/cli/requires.py", line 276, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/oncology/lib/python3.11/site-packages/dbt/cli/requires.py", line 321, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/oncology/lib/python3.11/site-packages/dbt/cli/requires.py", line 368, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/oncology/lib/python3.11/site-packages/dbt/cli/main.py", line 307, in docs_serve
+    results = task.run()
+              ^^^^^^^^^^
+  File "/opt/anaconda3/envs/oncology/lib/python3.11/site-packages/dbt/task/docs/serve.py", line 29, in run
+    httpd.serve_forever()
+  File "/opt/anaconda3/envs/oncology/lib/python3.11/socketserver.py", line 233, in serve_forever
+    ready = selector.select(poll_interval)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/oncology/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+
+[0m17:05:06.994101 [debug] [MainThread]: Resource report: {"command_name": "serve", "command_success": false, "command_wall_clock_time": 261.38522, "process_in_blocks": "0", "process_kernel_time": 0.188303, "process_mem_max_rss": "123256832", "process_out_blocks": "0", "process_user_time": 0.773974}
+[0m17:05:06.994890 [debug] [MainThread]: Command `dbt docs serve` failed at 17:05:06.994779 after 261.39 seconds
+[0m17:05:06.995545 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111864f90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x110d70ad0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x110fbf750>]}
+[0m17:05:06.995992 [debug] [MainThread]: Flushing usage events
+[0m17:05:07.196630 [debug] [MainThread]: An error was encountered while trying to flush usage events

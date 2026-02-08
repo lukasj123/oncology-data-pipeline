@@ -1,44 +1,72 @@
 ## Project Goal
 
-This project builds an ELT data pipeline for oncology drug discovery, integrating industry-standard datasets from Open Targets (target-disease associations).
+This project builds an **ELT data pipeline** for oncology drug discovery using **dbt, Postgres, and Python**. It integrates biomedical data from Open Targets (target-disease associations) and Cancer Genome Interpreter (biomarker evidence), creating a queryable data warehouse for cancer research analytics.
 
-Without a centralized pipeline, biotech R&D teams often work with siloed, outdated exports and inconsistent identifiers across datasets. This pipeline addresses those challenges by automatically ingesting fresh data, normalizing schemas, and loading a clean relational data model into Postgres, enabling analysts to query drug-target-disease relationships with a professional backend.
+**The problem:** Biotech R&D teams often work with siloed CSV exports, inconsistent identifiers, and no standardized data model — making cross-dataset analysis difficult and error-prone.
 
-The raw data is archived in S3 for auditability, and the pipeline includes data quality checks and orchestration for reproducibility. I chose S3 as the raw landing zone to mirror a production architecture where raw files are decoupled from the database and versioned for auditability.
+**This solution:** An automated pipeline that:
+- Ingests raw data from Open Targets (4.5M associations, 1.3K biomarker records)
+- Filters to 9,428 cancer-relevant associations (184 genes × 77 diseases)
+- Transforms data through staging → marts layers using **dbt**
+- Creates dimension tables (targets, diseases, drugs) and fact tables (associations, biomarker evidence)
+- Validates data quality with **23 automated tests**
+- Generates lineage documentation via dbt docs
 
-## Architecture Overview
+**Tech stack:** Python (ingestion), dbt (transformation), Postgres (warehouse), Docker (local dev)
 
-Note to flesh out later:
-This pipeline focuses on cancer-relevant target-disease associations, filtering the full Open Targets dataset (4.5M associations) to the 9,428 associations involving the 184 genes and 77 diseases that have biomarker evidence in the Cancer Genome Interpreter dataset. This scope enables:
+---
 
-Analysis of known cancer biomarkers with drug response evidence
-Discovery of potential drug repurposing opportunities within oncology
-Integration of pharmacogenomic data for precision medicine applications
+## Architecture
+
+**Three-layer pipeline:**
+```
+RAW → STAGING (dbt views) → MARTS (dbt tables)
+```
+
+**Raw layer** (Python → Postgres):
+- `raw.associations` — 4.5M target-disease pairs from Open Targets
+- `raw.biomarkers` — 1.3K cancer biomarker evidence records
+
+**Staging layer** (dbt views - cleaning & filtering):
+- Filter associations to cancer-relevant genes/diseases only
+- Deduplicate disease names (some IDs had multiple variants)
+- Unify drug compounds and drug families into single table
+- Standardize column naming (camelCase → snake_case)
+
+**Marts layer** (dbt tables - analytics-ready):
+- `dim_targets` (184 genes), `dim_diseases` (77 diseases), `dim_drugs` (266 drugs)
+- `fact_target_disease_associations` (9,428 filtered associations)
+- `fact_cancer_biomarker_evidence` (1,301 evidence records with drug info)
+
+**Data quality:** 23 dbt tests validate uniqueness, referential integrity, and business rules.
+
+---
 
 ## How to Run
 
-## Key Learnings & Design Decisions
+*[To be filled with setup instructions]*
 
-### Normalization vs. Denormalization Trade-offs
+---
 
-One of the fundamental tensions in data modeling is the trade-off between **storage efficiency** (normalization) and **query efficiency** (denormalization).
+## Key Design Decisions
 
-**Normalization (storage efficient):**
-- Eliminates data duplication by splitting related data into separate tables
-- Requires joins to reassemble data for queries
-- Ideal for transactional systems (OLTP) with frequent writes and updates
-- Example: Storing drug metadata once in a `drugs` table, referenced by ID elsewhere
+### Why filter 4.5M → 9.4K associations?
 
-**Denormalization (query efficient):**
-- Accepts some duplication to avoid expensive joins
-- Faster read performance, especially for analytics queries
-- Ideal for analytical systems (OLAP) where reads vastly outnumber writes
-- Example: Storing drug names directly in biomarker records instead of joining to a dimension table
+The full Open Targets dataset contains associations for **all diseases**. We filtered to associations where both the target (gene) AND disease appear in the cancer biomarkers dataset, creating a **cancer-focused** data warehouse while enabling discovery queries like "What other cancers involve this gene?"
 
-**Our approach:** Since this is an analytical data warehouse optimized for read queries, we lean toward denormalization when the trade-off is marginal. For example, we use a single `drugs` table with a `drug_type` flag rather than splitting into `drugs` and `drug_families` tables, because:
-- Storage difference is negligible (~300 rows either way)
-- Query complexity is reduced (one join instead of UNION logic)
-- Transformation logic is simpler
-- Still semantically clear with the type flag
+### Normalization trade-offs
 
-This decision prioritizes **developer experience** and **query simplicity** over theoretical normalization purity — appropriate for a data warehouse context.
+We chose **moderate normalization** — dimension tables for entities (genes, diseases, drugs) with fact tables referencing them. This balances:
+- **Query performance** (pre-joined dimensions = fast lookups)
+- **Storage efficiency** (genes stored once, not repeated 10K times)
+- **Data integrity** (foreign key tests ensure no orphaned records)
+
+For edge cases like drug families vs. compounds, we used a single `drugs` table with a `type` flag rather than splitting into two tables — simpler queries, negligible storage difference.
+
+### dbt over Python transformations
+
+We use **dbt for all transformations** (not Python scripts) because:
+- SQL is declarative and easier to review/maintain
+- Built-in dependency management (dbt runs models in correct order)
+- Automatic testing and documentation
+- Industry standard for analytics engineering roles
