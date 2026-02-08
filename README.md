@@ -8,6 +8,13 @@ The raw data is archived in S3 for auditability, and the pipeline includes data 
 
 ## Architecture Overview
 
+Note to flesh out later:
+This pipeline focuses on cancer-relevant target-disease associations, filtering the full Open Targets dataset (4.5M associations) to the 9,428 associations involving the 184 genes and 77 diseases that have biomarker evidence in the Cancer Genome Interpreter dataset. This scope enables:
+
+Analysis of known cancer biomarkers with drug response evidence
+Discovery of potential drug repurposing opportunities within oncology
+Integration of pharmacogenomic data for precision medicine applications
+
 ## How to Run
 
 ## Key Learnings & Design Decisions

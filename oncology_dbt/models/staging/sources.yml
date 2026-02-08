@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: raw
+    description: Raw data loaded from Parquet files
+    schema: raw
+    tables:
+      - name: associations
+        description: All target-disease associations from Open Targets
+      - name: biomarkers
+        description: Cancer biomarker evidence from Cancer Genome Interpreter
