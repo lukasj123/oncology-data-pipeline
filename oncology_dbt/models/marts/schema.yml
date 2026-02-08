@@ -1,0 +1,92 @@
+version: 2
+
+models:
+  - name: dim_targets
+    description: Dimension table containing cancer-relevant genes/proteins
+    columns:
+      - name: target_id
+        description: Ensembl gene identifier
+        tests:
+          - unique
+          - not_null
+      - name: gene_symbol
+        description: Human-readable gene symbol (e.g., BRCA2, TP53)
+        tests:
+          - not_null
+
+  - name: dim_diseases
+    description: Dimension table containing cancer disease types
+    columns:
+      - name: disease_id
+        description: EFO disease ontology identifier
+        tests:
+          - unique
+          - not_null
+      - name: disease_name
+        description: Human-readable disease name
+        tests:
+          - not_null
+
+  - name: dim_drugs
+    description: Dimension table containing drug compounds and drug families
+    columns:
+      - name: drug_identifier
+        description: ChEMBL ID for compounds, drug name for families
+        tests:
+          - unique
+          - not_null
+      - name: drug_name
+        tests:
+          - not_null
+      - name: drug_type
+        description: Either 'compound' or 'family'
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['compound', 'family']
+          - not_null
+
+  - name: fact_target_disease_associations
+    description: Cancer-relevant target-disease associations with evidence scores
+    columns:
+      - name: target_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_targets')
+              field: target_id
+      - name: disease_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_diseases')
+              field: disease_id
+      - name: association_score
+        tests:
+          - not_null
+      - name: evidence_count
+        tests:
+          - not_null
+
+  - name: fact_cancer_biomarker_evidence
+    description: Detailed biomarker evidence linking targets, diseases, and drugs
+    columns:
+      - name: evidence_id
+        tests:
+          - unique
+          - not_null
+      - name: target_id
+        tests:
+          - relationships:
+              to: ref('dim_targets')
+              field: target_id
+      - name: disease_id
+        tests:
+          - relationships:
+              to: ref('dim_diseases')
+              field: disease_id
+      - name: drug_identifier
+        tests:
+          - relationships:
+              to: ref('dim_drugs')
+              field: drug_identifier
