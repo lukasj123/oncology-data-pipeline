@@ -42,6 +42,31 @@ RAW → STAGING (dbt views) → MARTS (dbt tables)
 
 ---
 
+## Key Design Decisions
+
+### Why filter 4.5M → 9.4K associations?
+
+The full Open Targets dataset contains associations for **all diseases**. I filtered to associations where both the target (gene) AND disease appear in the cancer biomarkers dataset, creating a **cancer-focused** data warehouse while enabling discovery queries like "What other cancers involve this gene?"
+
+### Normalization trade-offs
+
+I chose **moderate normalization** — dimension tables for entities (genes, diseases, drugs) with fact tables referencing them. This balances:
+- **Query performance** (pre-joined dimensions = fast lookups)
+- **Storage efficiency** (genes stored once, not repeated 10K times)
+- **Data integrity** (foreign key tests ensure no orphaned records)
+
+For edge cases like drug families vs. compounds, I used a single `drugs` table with a `type` flag rather than splitting into two tables. This enables simpler queries with a negligible storage difference.
+
+### dbt over Python transformations
+
+I use **dbt for all transformations** (not Python scripts) because:
+- SQL is declarative and easier to review/maintain
+- Built-in dependency management (dbt runs models in correct order)
+- Automatic testing and documentation
+- Industry standard for analytics engineering
+
+---
+
 ## How to Run
 
 ### Prerequisites
@@ -118,28 +143,3 @@ oncology-data-pipeline/
 ├── notebooks/             # Exploratory analysis
 └── sql/                   # DDL scripts
 ```
-
----
-
-## Key Design Decisions
-
-### Why filter 4.5M → 9.4K associations?
-
-The full Open Targets dataset contains associations for **all diseases**. We filtered to associations where both the target (gene) AND disease appear in the cancer biomarkers dataset, creating a **cancer-focused** data warehouse while enabling discovery queries like "What other cancers involve this gene?"
-
-### Normalization trade-offs
-
-We chose **moderate normalization** — dimension tables for entities (genes, diseases, drugs) with fact tables referencing them. This balances:
-- **Query performance** (pre-joined dimensions = fast lookups)
-- **Storage efficiency** (genes stored once, not repeated 10K times)
-- **Data integrity** (foreign key tests ensure no orphaned records)
-
-For edge cases like drug families vs. compounds, we used a single `drugs` table with a `type` flag rather than splitting into two tables. This enables simpler queries with a negligible storage difference.
-
-### dbt over Python transformations
-
-We use **dbt for all transformations** (not Python scripts) because:
-- SQL is declarative and easier to review/maintain
-- Built-in dependency management (dbt runs models in correct order)
-- Automatic testing and documentation
-- Industry standard for analytics engineering

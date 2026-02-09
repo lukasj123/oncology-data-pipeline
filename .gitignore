@@ -1,1 +1,18 @@
+# Environment
 .env
+*.pyc
+__pycache__/
+
+# Data files (too large for git)
+data/raw/
+
+# dbt artifacts
+oncology_dbt/target/
+oncology_dbt/dbt_packages/
+oncology_dbt/logs/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
