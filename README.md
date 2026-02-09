@@ -1,6 +1,5 @@
-# Oncology Data Pipeline
-**Author:** Luke Jenkins 
-**Project:** End-to-End ELT Pipeline for Cancer Drug Discovery R&D Teams
+# End-to-End ELT Pipeline for Cancer Drug Discovery R&D Teams
+## Lukas Jenkins, February 2026
 
 ---
 
