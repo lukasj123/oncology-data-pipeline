@@ -67,6 +67,18 @@ I use **dbt for all transformations** (not Python scripts) because:
 
 ---
 
+## Example Analysis
+
+See `notebooks/02_example_analysis.ipynb` for example queries and visualizations demonstrating the data warehouse in action:
+
+- **Top cancer genes by disease associations** — Which genes are implicated across the most cancer types?
+- **Drug targeting analysis** — What drugs target specific genes like BRCA2?
+- **Cancer types by biomarker evidence** — Which cancers have the most drug-target evidence?
+
+The notebook includes SQL queries, pandas analysis, and matplotlib/seaborn visualizations.
+
+---
+
 ## How to Run
 
 ### Prerequisites
