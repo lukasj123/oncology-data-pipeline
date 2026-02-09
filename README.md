@@ -65,12 +65,10 @@ The full Open Targets dataset contains associations for **all diseases**. I filt
 
 ### Normalization trade-offs
 
-I chose **moderate normalization** — dimension tables for entities (genes, diseases, drugs) with fact tables referencing them. This balances:
+I implemented a star schema with normalized dimension tables for entities (genes, diseases, drugs) with fact tables referencing them. This balances:
 - **Query performance** (pre-joined dimensions = fast lookups)
 - **Storage efficiency** (genes stored once, not repeated 10K times)
 - **Data integrity** (foreign key tests ensure no orphaned records)
-
-For edge cases like drug families vs. compounds, I used a single `drugs` table with a `type` flag rather than splitting into two tables. This enables simpler queries with a negligible storage difference.
 
 ### dbt over Python transformations
 
