@@ -1,22 +1,34 @@
-## Why This Matters
+# Oncology Data Pipeline
+**Author:** Luke Jenkins 
+**Project:** End-to-End ELT Pipeline for Cancer Drug Discovery R&D Teams
 
-In oncology drug discovery, R&D teams need to explore relationships between genes, diseases, and drugs to prioritize targets and identify repurposing opportunities. However, critical datasets like target-disease associations and cancer biomarker evidence exist in separate sources with inconsistent identifiers, making integrated analysis difficult and time-consuming.
+---
 
-This project solves that problem by building an **end-to-end ELT data pipeline** that integrates biomedical data from Open Targets and Cancer Genome Interpreter into a standardized, queryable data warehouse — enabling analysts to explore drug-gene-disease relationships for research prioritization.
+## Executive Summary
+
+In oncology drug discovery, R&D teams need to explore relationships between genes, diseases, and drugs to prioritize targets and identify repurposing opportunities. However, critical datasets containing information on target-disease associations and cancer biomarker evidence exist in separate sources with inconsistent identifiers, making integrated analysis difficult and time-consuming.
+
+I built an **end-to-end ELT data pipeline** using **dbt, Postgres, and Python** that integrates publicly available biomedical data from Open Targets and Cancer Genome Interpreter. The pipeline filters to 9,428 cancer-relevant associations across 184 genes and 77 diseases, transforms data through staging and mart layers, and enables analysts to query drug-gene-disease relationships through a standardized dimensional model.
+
+**Key outcomes:**
+- Automated data ingestion and transformation with 23 quality tests
+- Star schema data warehouse with dimension and fact tables
+- Example analyses demonstrating drug targeting patterns and pan-cancer genes
+- Full pipeline documentation via dbt docs
+
+**Tech stack:** Python (ingestion), dbt (transformation), PostgreSQL (warehouse), Docker (local dev), Jupyter (EDA + Example Application)
 
 ---
 
 ## Project Goal
 
-I architected an **ELT data pipeline** for oncology drug discovery using **dbt, Postgres, and Python**. The pipeline integrates publicly available biomedical data:
-- **Open Targets Platform** (4.5M target-disease associations across all diseases)
-- **Cancer Genome Interpreter** (1.3K cancer biomarker records with drug response evidence)
+I architected an **ELT data pipeline** for oncology drug discovery using **dbt, Postgres, and Python**. The pipeline integrates two large publicly available biomedical data:
+- **Open Targets: Associations - Direct (overall score)** (4.5M rows of target-disease associations across all diseases)
+- **Cancer Genome Interpreter (downloaded through Open Targets): Cancer biomarker evidence** (1.3K rows of cancer biomarker records with drug response evidence)
 
 Both datasets are publicly available and were downloaded directly from Open Targets FTP for this project.
 
-**The technical challenge:** I filtered the full 4.5M association dataset to 9,428 cancer-relevant associations (184 genes × 77 diseases), then transformed the data through staging and marts layers using dbt, creating dimension tables (targets, diseases, drugs) and fact tables (associations, biomarker evidence). The pipeline includes 23 automated data quality tests and generates lineage documentation via dbt docs.
-
-**Tech stack:** Python (ingestion), dbt (transformation), Postgres (warehouse), Docker (local dev)
+**The technical challenge:** I filtered the full 4.5M association dataset to 9,428 cancer-relevant associations (184 genes × 77 diseases), then transformed the data through staging and marts layers using dbt, creating dimension tables (targets, diseases, drugs) and fact tables (associations, biomarker evidence). The pipeline includes 23 automated data quality tests and generates documentation via dbt docs.
 
 ---
 
