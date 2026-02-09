@@ -1,8 +1,5 @@
 # End-to-End ELT Pipeline for Cancer Drug Discovery R&D Teams
 ## Lukas Jenkins, February 2026
-
----
-
 ## Executive Summary
 
 In oncology drug discovery, R&D teams need to explore relationships between genes, diseases, and drugs to prioritize targets and identify repurposing opportunities. However, critical datasets containing information on target-disease associations and cancer biomarker evidence exist in separate sources with inconsistent identifiers, making integrated analysis difficult and time-consuming.
